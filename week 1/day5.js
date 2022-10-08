@@ -1,11 +1,24 @@
+// This function receives a string and:
+//   - Splits the string using ','
+//   - Filters out the elements containing dog, bark or bone
+//   - Filters out the elements of length divisible by 5
+//   - Filters out the elements wich first and last element sum of Unicodes values is even
+//   - Filters out the elements that have the character 'e' in the character next to the middle of the string
+//   - Filters out the elements with an odd number of lower case letters
+//   - Filters out the elements with less than 2 upper case letters
+//   - Filters out the elements that have the character 'S'
+
 function filterTitles(str){
     return str.split(',')
                 .filter(name => name.at(0) !== ' ' && name.at(-1) !== ' ')
+                // /dog|bark|bone/i     Matches the strings 'dog', 'bark' or 'bone'. The 'i' means insensitive so it ignores the case
                 .filter(name => !/dog|bark|bone/i.test(name))
                 .filter(name => name.length % 5)
                 .filter(name => (name.charCodeAt(0) + name.charCodeAt(name.length - 1)) % 2)
                 .filter(name => name.at(Math.round(name.length / 2)) !== 'e')
+                // /[^a-z]/g            Matches every character different to a lower case letter in the string
                 .filter(name => name.replace(/[^a-z]/g, '').length % 2 == 0)
+                // /[^A-Z]/g            Matches every character different to an upper case letter in the string
                 .filter(name => name.replace(/[^A-Z]/g, '').length > 1)
                 .filter(name => !name.includes('S'));
 }

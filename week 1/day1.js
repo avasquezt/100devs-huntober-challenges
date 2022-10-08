@@ -26,6 +26,7 @@ let dir = {
 // This function replaces each character from the String, using the previous dictionary, only if it exists in the dictionary
 
 function repareString(str){
+    // /./g Matches every character in the given string
     return str.replace(/./g, char => dir[char] ?? char);
 }
 
