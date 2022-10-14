@@ -3,9 +3,27 @@ function swapLeft(arr, element){
     return arr.sort((a, b) => a === element ? -1 : b === element ? 1 : 0);
 }
 
+function swapLeft(arr, element){
+    let idx = arr.indexOf(element);
+    if (idx > 0){
+        arr[idx] = arr [idx - 1];
+        arr[idx - 1] = element;
+    }
+    return arr;
+}
+
 // This function receives an array and an element and moves that element to the end of the array 
 function swapRight(arr, element){
     return arr.sort((a, b) => a === element ? 1 : b === element ? -1 : 0);
+}
+
+function swapRight(arr, element){
+    let idx = arr.indexOf(element);
+    if (idx < arr.length - 1){
+        arr[idx] = arr [idx + 1];
+        arr[idx + 1] = element;
+    }
+    return arr;
 }
 
 // myArray = ['abc', 'xyz', 1, 2, 'Hey!'];
